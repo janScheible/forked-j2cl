@@ -2,6 +2,13 @@
 
 Allow Maven usage.
 
+In `transpiler\pom` execute `mvn clean install` + `mvn install` (second invocation cause the generated sources are not picked up the first time).
+After second invocation the j2cl generated files for `HelloWorld.java` of the sample are in `samples\helloworld\target\j2cl`.
+
+With Maven profile `fat-jar` a command line version of the transpiler is built in `transpiler\pom\transpiler\target\j2cl-transpiler-1.0-SNAPSHOT.jar`.
+
+Tested with Java 8.
+
 # [J2CL](http://j2cl.io)
 
 Seamless Java in JavaScript applications that tightly optimizes with

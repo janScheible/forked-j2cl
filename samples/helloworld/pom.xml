@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>google.j2cl.example</groupId>
+	<artifactId>hello-world</artifactId>
+	<version>1.0-SNAPSHOT</version>		
+		
+	<packaging>jar</packaging>
+	<name>j2cl :: example :: hello-world</name>
+	
+	<dependencies>
+		<dependency>
+			<groupId>google.j2cl</groupId>
+			<artifactId>j2cl-transpiler</artifactId>
+			<version>1.0-SNAPSHOT</version>		
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<id>j2cl</id>
+
+						<phase>install</phase>						
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						
+						<configuration>
+							<executable>java</executable>
+							<arguments>
+								<argument>-classpath</argument>
+								<classpath/>
+								<argument>com.google.j2cl.transpiler.J2clCommandLineRunner</argument>
+								<argument>${project.basedir}/src/main/java/com/google/j2cl/samples/helloworldlib/HelloWorld.java</argument>
+								<argument>-cp</argument>
+								<argument>${env.JAVA_HOME}/jre/lib/rt.jar;${env.USERPROFILE}/.m2/repository/com/google/jsinterop/jsinterop-annotations/1.0.2/jsinterop-annotations-1.0.2.jar</argument>
+								<argument>-d</argument>
+								<argument>target\j2cl</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+	<action>
+		<actionName>CUSTOM-j2cl</actionName>
+		<displayName>j2cl</displayName>
+		<goals>
+			<goal>exec:exec@j2cl</goal>
+		</goals>
+	</action>
+</actions>
