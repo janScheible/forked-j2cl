@@ -1,3 +1,7 @@
+# Reason for forking the repository
+
+Allow Maven usage.
+
 # [J2CL](http://j2cl.io)
 
 Seamless Java in JavaScript applications that tightly optimizes with
