@@ -7,4 +7,19 @@
 			<goal>exec:exec@j2cl</goal>
 		</goals>
 	</action>
+	<action>
+		<actionName>debug</actionName>
+		<packagings>
+			<packaging>jar</packaging>
+		</packagings>
+		<goals>
+			<goal>process-classes</goal>
+			<goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+		</goals>
+		<properties>
+			<exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath com.google.j2cl.transpiler.J2clCommandLineRunner ${project.basedir}/src/main/java/com/google/j2cl/samples/helloworldlib/HelloWorld.java -cp ${env.JAVA_HOME}/jre/lib/rt.jar;${env.USERPROFILE}/.m2/repository/com/google/jsinterop/jsinterop-annotations/1.0.2/jsinterop-annotations-1.0.2.jar -d target\j2cl</exec.args>
+			<exec.executable>java</exec.executable>
+			<jpda.listen>true</jpda.listen>
+		</properties>
+	</action>
 </actions>
